@@ -20,6 +20,21 @@ namespace ProvaAdmissionalApisul.Service
             }
         }
 
+        public float CalcularPercentualElevadores(char elevador)
+        {
+            List<ElevadorData> ElevadorData = LeitorJson();
+
+            var elevadores = from e in ElevadorData
+                             where e.Elevador == elevador
+                             select e.Elevador;
+            
+            float QuantidadeElevador = elevadores.Count();
+
+            var resultado = (QuantidadeElevador * 100) / ElevadorData.Count();
+
+            return resultado;
+        }
+
         public List<int> andarMenosUtilizado()
         {
 
@@ -93,80 +108,31 @@ namespace ProvaAdmissionalApisul.Service
 
             return turnoMaisFrequentado;
         }
+
+
         public float percentualDeUsoElevadorA()
         {
-            List<ElevadorData> elevadorData = LeitorJson();
-
-            var elevadores = from e in elevadorData
-                             where e.Elevador == 'A'
-                             select e.Elevador;
-                        
-            float QuantidadeElevadorA = elevadores.Count();
-
-            float percentualDeUsoElevadorA = (QuantidadeElevadorA * 100) / elevadorData.Count();
-            
-            return percentualDeUsoElevadorA;
+            return CalcularPercentualElevadores('A');
         }
-
 
         public float percentualDeUsoElevadorB()
         {
-            List<ElevadorData> elevadorData = LeitorJson();
-
-            var elevadores = from e in elevadorData
-                             where e.Elevador == 'B'
-                             select e.Elevador;
-
-            float QuantidadeElevadorB = elevadores.Count();
-
-            float percentualDeUsoElevadorB = (QuantidadeElevadorB * 100) / elevadorData.Count();
-
-            return percentualDeUsoElevadorB;
+            return CalcularPercentualElevadores('B');
         }
 
         public float percentualDeUsoElevadorC()
         {
-            List<ElevadorData> elevadorData = LeitorJson();
-
-            var elevadores = from e in elevadorData
-                             where e.Elevador == 'C'
-                             select e.Elevador;
-
-            float QuantidadeElevadorC = elevadores.Count();
-
-            float percentualDeUsoElevadorC = (QuantidadeElevadorC * 100) / elevadorData.Count();
-
-            return percentualDeUsoElevadorC;
+            return CalcularPercentualElevadores('C');
         }
 
         public float percentualDeUsoElevadorD()
         {
-            List<ElevadorData> elevadorData = LeitorJson();
-
-            var elevadores = from e in elevadorData
-                             where e.Elevador == 'D'
-                             select e.Elevador;
-
-            float QuantidadeElevadorD = elevadores.Count();
-
-            float percentualDeUsoElevadorD = (QuantidadeElevadorD * 100) / elevadorData.Count();
-
-            return percentualDeUsoElevadorD;
+            return CalcularPercentualElevadores('D');
         }
 
         public float percentualDeUsoElevadorE()
         {
-            List<ElevadorData> elevadorData = LeitorJson();
-
-            var elevadores = from e in elevadorData
-                             where e.Elevador == 'E'
-                             select e.Elevador;
-
-            float QuantidadeElevadorE = elevadores.Count();
-
-            float percentualDeUsoElevadorE = (QuantidadeElevadorE * 100) / elevadorData.Count();
-
-            return percentualDeUsoElevadorE;
+            return CalcularPercentualElevadores('E');
         }
 
         public List<char> periodoMaiorUtilizacaoConjuntoElevadores()
